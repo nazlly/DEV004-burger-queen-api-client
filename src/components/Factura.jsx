@@ -50,10 +50,10 @@ const Factura = () => {
       <input className="input btn-mesa" type="submit" value="Mesas" />
       <ul className="nav">
         <ul className="lista-mesas">
-          <li><a href="">Mesa 1</a></li>
-          <li><a href="">Mesa 2</a></li>
-          <li><a href="">Mesa 3</a></li>
-          <li><a href="">Mesa 4</a></li>
+          <li><a href="!#">Mesa 1</a></li>
+          <li><a href="!#">Mesa 2</a></li>
+          <li><a href="!#">Mesa 3</a></li>
+          <li><a href="!#">Mesa 4</a></li>
         </ul>
       </ul>
       <input className="input btn-confirmar" type="submit" value="Confirmar Pedido" />

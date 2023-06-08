@@ -1,9 +1,14 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Header = (props) => {
 
+  const navigate = useNavigate()
+
   const cerrarSesion = () => {
     localStorage.removeItem('token')
+    localStorage.removeItem('user')
+    navigate("/login")
   }
 
   return (

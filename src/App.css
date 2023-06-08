@@ -4,6 +4,7 @@
   --green: #A0E2D4;
   --beige: #FAD491;
   --gray: #EBECF0;
+  --gray-light: #fbfbfb;
   --text-bold: #443C3C;
   --text-light: #7C7676;
   --text-error: red;
@@ -13,7 +14,8 @@
 body {
   font-family: 'Roboto';
   color: var(--text-bold);
-
+  background-color: var(--gray-light);
+ 
 }
  h2 {
   margin: 12px;
@@ -95,6 +97,9 @@ body {
   font-weight: bold;
   color: var(--text-bold);
 }
+.btn:hover {
+  cursor: pointer;
+}
 .btn-pink{
   background-color: var(--pink);
   color: var(--text-bold);
@@ -144,10 +149,18 @@ body {
 
 
 .base {
-  background-color: var(--pink);
   color: var(--text-bold);
   font-weight: bold;
   padding: 15px;
+}
+
+.bg-pink {
+  background-color: var(--pink);
+}
+
+.bg-green {
+  background-color: var(--green);
+
 }
 
 .resumen {
@@ -163,7 +176,7 @@ body {
   padding: 7px;
   border-radius: 12px;
   color: whitesmoke;
-
+  
 }
 
 .bi-dash-square{
@@ -172,7 +185,7 @@ body {
   padding: 7px;
   border-radius: 12px;
   color: whitesmoke;
-
+  
 }
 
 .columna {
@@ -217,11 +230,12 @@ p {
   margin: 12px;
 }
 
+
 .nav-header {
   height: 90px;
   padding: 10px 20px;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
 }
 
@@ -280,7 +294,7 @@ ul, ol {
   width: 225px;
   text-align: center;
   border-radius: 10px;
-
+  
 }
 
 .nav li a:hover {
