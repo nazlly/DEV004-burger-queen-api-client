@@ -14,8 +14,9 @@ const Waiter = () => {
   useEffect(() => {
     if (localStorage.getItem('user')) {
 
-      const {roles} = JSON.parse(localStorage.getItem("user"))
-      if(localStorage.getItem("token") &&  roles.waiter){
+      const usuario = JSON.parse(localStorage.getItem("user"))
+      console.log("role",usuario)
+      if(localStorage.getItem("token") &&  usuario.user.role === "waiter"){
         setShowPage(true)
       } 
 

@@ -12,11 +12,13 @@ const Login = () => {
   useEffect(()=>{
     if (localStorage.getItem('user')) {
       const roles = JSON.parse(localStorage.getItem("user"))
-console.log(roles)
-      if (roles.chef) navigate("/chef")
-      if (roles.admin) navigate("/management")
-      if (roles.waiter) navigate("/waiter")
+      const rolee= roles.user.role
 
+console.log("role",rolee)
+      if (rolee ==="chef") navigate("/chef")
+      if (rolee ==="admin") navigate("/management")
+      if (rolee ==="waiter") navigate("/waiter")
+    
     }
     setShowPage(true)
   // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -12,14 +12,14 @@ const Chef = () => {
   useEffect(() => {
     if (localStorage.getItem('user')) {
 
-      const {roles} = JSON.parse(localStorage.getItem("user"))
-      console.log(roles)
+      const usuario = JSON.parse(localStorage.getItem("user"))
+     
 
-      if(localStorage.getItem("token") &&  roles.chef){
+      if(localStorage.getItem("token") &&  usuario.user.role === "chef"){
         setShowPage(true)
       } else {
-        if (roles.waiter) navigate("/waiter")
-        if (roles.admin) navigate("/management")
+        if (usuario.user.role ==="waiter") navigate("/waiter")
+        if (usuario.user.role ==="admin") navigate("/management")
       }
     } else {
       navigate("/login")

@@ -42,19 +42,6 @@ const LoginForm = () => {
   const handleSendForm = e => {
     e.preventDefault()
 
-    /* 
-      1. Capturar los datos de los input - ok
-      2. Validar los datos - ok
-      3. Fetch a la bd - 
-      4. Capturar respuesta afirmativa - 
-      5. Guardar el tocken en localstorage -
-      6. Redireccionar de acuerdo al rol - 
-      7. Guardar el error de validacion en el state - 
-      8. Capturar el error de la bd - 
-      9. Guardar error en español en el state  - 
-      10. Validar si tiene token activo enviar a la pagina del rol respectivo -
-    */
-
       fetchDB("login", "POST", {
         "email": datos.email,
         "password": datos.password
@@ -63,11 +50,14 @@ const LoginForm = () => {
       .then(data => {
         if (typeof data === "object") {
           localStorage.setItem('token', data.accessToken);
-          localStorage.setItem('user', JSON.stringify(data.user));
-  
-          if(data?.user?.roles?.admin) navigate("/management")
-          if(data?.user?.roles?.chef) navigate("/chef")
-          if(data?.user?.roles?.waiter) navigate("/waiter")
+          localStorage.setItem('user', JSON.stringify(data));
+          const usuari=data.user.role
+
+   console.log("data",usuari)
+          if(usuari==="admin") navigate("/management")
+          if(usuari==="chef") navigate("/chef")
+          if(usuari==="waiter") navigate("/waiter")
+          
 
           setDatos({
             ...datos,
