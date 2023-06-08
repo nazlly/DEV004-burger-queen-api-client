@@ -45,14 +45,14 @@ const LoginForm = () => {
     /* 
       1. Capturar los datos de los input - ok
       2. Validar los datos - ok
-      3. Fetch a la bd - ok
-      4. Capturar respuesta afirmativa - ok
-      5. Guardar el tocken en localstorage - ok
-      6. Redireccionar de acuerdo al rol - ok
-      7. Guardar el error de validacion en el state - ok
-      8. Capturar el error de la bd - ok
-      9. Guardar error en español en el state  - ok
-      10. Validar si tiene token activo enviar a la pagina del rol respectivo -ok
+      3. Fetch a la bd - 
+      4. Capturar respuesta afirmativa - 
+      5. Guardar el tocken en localstorage -
+      6. Redireccionar de acuerdo al rol - 
+      7. Guardar el error de validacion en el state - 
+      8. Capturar el error de la bd - 
+      9. Guardar error en español en el state  - 
+      10. Validar si tiene token activo enviar a la pagina del rol respectivo -
     */
 
       fetchDB("login", "POST", {
