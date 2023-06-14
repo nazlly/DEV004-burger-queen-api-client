@@ -7,7 +7,7 @@ export const fetchDB = (url, method, data, token) => {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + token,
     },
-    body: method === "POST" ? JSON.stringify(data) : null
+    body: method === "POST" || method === "PATCH" ? JSON.stringify(data) : null
   })
   .then(response => response.json())
   .catch(error => error);

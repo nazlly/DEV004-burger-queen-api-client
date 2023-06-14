@@ -1,5 +1,5 @@
 import React from 'react'
-import {render, fireEvent, waitFor, screen, getByTestId} from '@testing-library/react'
+import {render, fireEvent, waitFor, screen} from '@testing-library/react'
 import '@testing-library/jest-dom'
 //import Fetch from '../fetch'
 import LoginForm from './LoginForm'
@@ -99,32 +99,11 @@ expect(errMnsj.textContent).toBe('Correo inválido.')
 })
 })
 
-// it('No hay error',async () => {
-//   render(< App />);
-// const emailInput= screen.getByPlaceholderText('Digite su e-mail')
-// const passwordInput= screen.getByPlaceholderText('Digite su contraseña')
-// fireEvent.change(emailInput,{target: {value: 'mesero1@queen.com'}})
-// fireEvent.change(passwordInput,{target: {value: '123456'}})
-
-// const btnLogin = screen.getByText('Iniciar Sesión');
-// fireEvent.click(btnLogin)
-// //let errMnsj;
-//   await waitFor(() => {
-//     let logoutElement = screen.getByText('Cerrar Sesion');
-//     expect(logoutElement).toBeInTheDocument();
-//  // const validationmsj = screen.getByText('');
-//   //expect(validationmsj).toBe('');
-// //})
-// })
-
-
     
 //     it('validación corecta',async () => {
     
 //       const history = createMemoryHistory()
-//       const route = '/Waiter'
-//       history.push(route)
-//       render(
+//       const {debug} = render(
 //         <Router location={history.location} navigator={history}>
 //           <LoginForm />
 //         </Router>,
@@ -133,13 +112,17 @@ expect(errMnsj.textContent).toBe('Correo inválido.')
 // const passwordInput= screen.getByPlaceholderText('Digite su contraseña')
 // fireEvent.change(emailInput,{target: {value: 'mesero1@queen.com'}})
 // fireEvent.change(passwordInput,{target: {value: '123456'}})
-
 // const btnLogin = screen.getByText('Iniciar Sesión');
 //   fireEvent.click(btnLogin)
-//     let waiterValid ;
-//     await waitFor(() => (waiterValid= screen.getByTestId('successful-entry')))
-//     expect(waiterValid).toHaveTextContent('route')
-//     // await waitFor(() => (waiterValid= screen.getByText('')))
-//     // expect(waiterValid).toBe('')
+//     await waitFor(() =>{
+//       debug()
+//       expect(history.location.pathname).tobe('/waiter')
+//     })
+    
+    
+    // (waiterValid= screen.getByTestId('successful-entry')))
+    // expect(waiterValid).toHaveTextContent('route')
+    // await waitFor(() => (waiterValid= screen.getByText('')))
+    // expect(waiterValid).toBe('')
 
-//   })
+  //})

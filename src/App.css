@@ -214,12 +214,14 @@ body {
 }
 
 .item-columna-resumen {
-  width: 40%;
+  width: 60%;
   padding: 10px;
   margin-left: 5px;
+  
 }
 .precio-columna-resumen {
   width: 20%;
+  text-align: center;
 }
 .cantidad-columna-resumen {
   width: 25%;
@@ -228,8 +230,18 @@ body {
   align-items: center;
 }
 
+.Hora-columna-resumen {
+  width: 40%;
+  padding: 10px;
+  margin-left: 5px;
+  text-align: center;
+  font-weight: bolder;
+
+}
+
 .total-columna-resumen {
-  width: 15%;
+  width: 20%;
+  text-align: center;
 }
 
 p {
@@ -244,7 +256,7 @@ p {
   height: 90px;
   padding: 10px 20px;
   display: flex;
-  justify-content: flex-end;
+  justify-content:flex-end;
   align-items: center;
 }
 
