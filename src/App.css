@@ -3,8 +3,7 @@
   --pink: #EF908C;
   --green: #A0E2D4;
   --beige: #FAD491;
-  --gray: #EBECF0;
-  --gray-light: #fbfbfb;
+  --gray: #cbccd1;
   --gray-light: #fbfbfb;
   --text-bold: #443C3C;
   --text-light: #7C7676;
@@ -15,8 +14,8 @@
 body {
   font-family: 'Roboto';
   color: var(--text-bold);
-  background-color: var(--gray-light);
-  
+  background-color: #f2f8c2;
+ 
 }
  h2 {
   margin: 12px;
@@ -134,8 +133,8 @@ body {
   align-items: center;
 }
 .menu {
-  max-width: 350px;
-  width: 90%;
+  max-width: 400px;
+  width: 95%;
   margin: 20px auto auto auto;
   padding: 10px;
 }
@@ -168,7 +167,14 @@ body {
   background-color: var(--orange);
   color: var(--text-bold);
   font-weight: bold;
-  padding: 15px;
+  padding: 10px;
+}
+
+.user-chef {
+  background-color: var(--pink);
+  color: var(--text-bold);
+  font-weight: bold;
+  padding: 15px 15px 15px 25px;
 }
 
 .bi-plus-square{
@@ -209,28 +215,30 @@ body {
 
 .item-columna-resumen {
   width: 40%;
-  padding: 5px;
+  padding: 10px;
+  margin-left: 5px;
 }
 .precio-columna-resumen {
   width: 20%;
 }
 .cantidad-columna-resumen {
-  width: 20%;
+  width: 25%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
 
 .total-columna-resumen {
-  width: 10%;
+  width: 15%;
 }
-
-
 
 p {
   margin: 12px;
 }
 
+/* .contenedor-resumen {
+  
+} */
 
 .nav-header {
   height: 90px;

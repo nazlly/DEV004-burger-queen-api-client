@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Header from '../components/Header'
+import KitchenForm from '../components/KitchenForm'
 
 const Chef = () => {
 
@@ -32,7 +33,7 @@ const Chef = () => {
         showPage && (
           <>
             <Header rol={"Chef"} />
-            <h1>Pagina de Chef</h1>
+            <KitchenForm/>
           </>
         )
       }

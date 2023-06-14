@@ -106,6 +106,8 @@ export const OrdersProvider = ({children}) => {
     .then((resultado) => console.log("Datos enviados: ", resultado))
   }
 
+  
+
   return (
     <OrdersContext.Provider
       value = {{
@@ -123,6 +125,7 @@ export const OrdersProvider = ({children}) => {
     </OrdersContext.Provider>
   )
 }
+
 
 export const useOrders = () => {
   return useContext(OrdersContext)

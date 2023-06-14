@@ -9,8 +9,10 @@ export const fetchDB = (url, method, data, token) => {
     },
     body: method === "POST" ? JSON.stringify(data) : null
   })
-  .then(response => {
-    if (response.ok) return response.json()
-    return response.ok
-  })
+  .then(response => response.json())
+  .catch(error => error);
+  // .then(response => {
+  //   if (response.ok) return response.json()
+  //   return response.ok
+  //  })
 }
