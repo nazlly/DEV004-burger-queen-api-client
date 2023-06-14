@@ -5,6 +5,7 @@
   --beige: #FAD491;
   --gray: #EBECF0;
   --gray-light: #fbfbfb;
+  --gray-light: #fbfbfb;
   --text-bold: #443C3C;
   --text-light: #7C7676;
   --text-error: red;
@@ -15,7 +16,7 @@ body {
   font-family: 'Roboto';
   color: var(--text-bold);
   background-color: var(--gray-light);
- 
+  
 }
  h2 {
   margin: 12px;

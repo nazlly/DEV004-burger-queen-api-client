@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { fetchDB } from '../conection/fetch'
 import { useOrders } from '../context/orders/OrdersContext'
 import Button from './iu/Button'
@@ -9,13 +10,15 @@ const Comanda = () => {
     order,
     setClient,
     setUserId,
-    setProduct
+    setProduct,
   } = useOrders()
 
   const user = JSON.parse(localStorage.getItem("user")) || null
 
   const [menuType, setMenuType] = useState("Desayuno")
   const [products, setProducts] = useState([])
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     setUserId( user.id )
@@ -25,13 +28,19 @@ const Comanda = () => {
   useEffect(() => {
     fetchDB("products", "GET", "", localStorage.getItem("token"))
     .then(data => {
+      if (!data) {
+        localStorage.removeItem('token')
+        localStorage.removeItem('user')
+        navigate("/")
+      }
       setProducts(data)
     })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   function getQuantity(product) {
-    const quantity = order.products.filter(p => {
-      return p.productId === product.id
+    const quantity = order?.products?.filter(p => {
+      return p?.productId === product?.id
     }) || []
     return quantity[0]?.qty || 0
   }
@@ -109,7 +118,9 @@ const Comanda = () => {
                       fill="currentColor" 
                       className="bi bi-dash-square" 
                       viewBox="0 0 16 16"
-                      onClick={()=>setProduct(product, "less")}
+                      onClick={()=>{
+                        setProduct(product, "less")
+                      }}
                     >
                       <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
                       <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>

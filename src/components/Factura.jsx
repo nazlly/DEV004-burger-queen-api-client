@@ -1,63 +1,71 @@
 import React from 'react'
+import { useOrders } from '../context/orders/OrdersContext'
 
 const Factura = () => {
+
+  const { order, confirmOrder, cleanOrder  } = useOrders()
+
+  let totalFactura = 0
+
   return (
     <div className="columna-md-50 contenedor-resumen">
-            <div className="menu">
-              <div className="table">
-                <div className="fila base resumen">
-                  <div className="columna item-columna-resumen">Items</div>
-                  <div className="columna precio-columna-resumen">Precio</div>
-                  <div className="columna cantidad-columna-resumen">Cantidad</div>
-                  <div className="columna total-columna-resumen">Total</div>
-                </div>
+      <div className="menu">
+        <div className="table">
+          <div className="fila base resumen">
+            <div className="columna item-columna-resumen">Items</div>
+            <div className="columna precio-columna-resumen">Precio</div>
+            <div className="columna cantidad-columna-resumen">Cantidad</div>
+            <div className="columna total-columna-resumen">Total</div>
+          </div>
 
-                <div className="fila">
-                  <div className="columna item-columna-resumen">Cafe Americano</div>
-                  <div className="columna precio-columna-resumen">$5</div>
-                  <div className="columna cantidad-columna-resumen">
-                  <p>5</p>
-                </div>
-                <div className="columna total-columna-resumen">$25</div>
-              </div>
+        {
+          order?.products?.map((product, i) => {
 
-              <div className="fila">
-                <div className="columna item-columna-resumen">Cafe con Leche</div>
-                <div className="columna precio-columna-resumen">$7</div>
-                <div className="columna cantidad-columna-resumen">
-                  <p>3</p>  
+            const totalProducto = product?.product?.price * product?.qty || 0
+            totalFactura += totalProducto
+
+            return (
+              <div key={i} className="fila">
+                <div className="columna item-columna-resumen">
+                  {product.product.name}
                 </div>
-                <div className="columna total-columna-resumen">$21</div>
+                <div className="columna precio-columna-resumen">
+                  ${product.product.price}
+                </div>
+                <div className="columna cantidad-columna-resumen">
+                  <p>{product.qty}</p>
+                </div>
+                <div className="columna total-columna-resumen">
+                  ${totalProducto}
+                </div>
               </div>
-              <div className="fila">
-                <div className="columna item-columna-resumen">Jugo de Frutas</div>
-                <div className="columna precio-columna-resumen">$5</div>
-                <div className="columna cantidad-columna-resumen">
-                  <p>1</p>
-                </div>
-                <div className="columna total-columna-resumen">$5</div>
-              </div> 
-              <div className="fila">
-                <div className="columna item-columna-resumen"></div>
-                <div className="columna precio-columna-resumen"></div>
-                <div className="columna cantidad-columna-resumen">
-                  <p>Total</p>
-                </div>
-                <div className="columna total-columna-resumen">$51</div>
-              </div> 
+            )
+          })
+        }
+
+        <div className="fila">
+          <div className="columna item-columna-resumen"></div>
+          <div className="columna precio-columna-resumen"></div>
+          <div className="columna cantidad-columna-resumen">
+            <p>Total</p>
+          </div>
+          <div className="columna total-columna-resumen">${totalFactura}</div>
+          </div> 
         </div>
       </div>
-      <input className="input btn-mesa" type="submit" value="Mesas" />
-      <ul className="nav">
-        <ul className="lista-mesas">
-          <li><a href="!#">Mesa 1</a></li>
-          <li><a href="!#">Mesa 2</a></li>
-          <li><a href="!#">Mesa 3</a></li>
-          <li><a href="!#">Mesa 4</a></li>
-        </ul>
-      </ul>
-      <input className="input btn-confirmar" type="submit" value="Confirmar Pedido" />
-      <input className="input btn-cancelar" type="submit" value="Cancelar Pedido" />
+      <input 
+        onClick={
+          ()=>{
+            confirmOrder()
+            cleanOrder()
+          } 
+        }
+        className="input btn-confirmar" 
+        type="submit" 
+        value="Confirmar Pedido" 
+      />
+
+      <input onClick={()=>cleanOrder()} className="input btn-cancelar" type="submit" value="Cancelar Pedido"/>
           </div>
   )
 }
