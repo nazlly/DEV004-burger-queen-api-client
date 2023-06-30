@@ -12,6 +12,7 @@ export const OrdersProvider = ({children}) => {
     "status": "pending",
     "dateEntry": new Date()
   })
+
   const [orders, setOrders]= useState([])
 
   useEffect(() => {
@@ -20,10 +21,9 @@ export const OrdersProvider = ({children}) => {
       const orderPending = data.filter((order)=>
         order.status)
         setOrders(orderPending)
+
     })
   }, [])
-
-  
 
   const cleanOrder = () => {
     setOrder({
@@ -33,14 +33,13 @@ export const OrdersProvider = ({children}) => {
     })
   }
 
-    const setClient = (client) => {
+
+  const setClient = (client) => {
     setOrder({
       ...order,
       client
     })
   }
-
-
 
   const setUserId = (userId) => {
     setOrder({
@@ -48,18 +47,19 @@ export const OrdersProvider = ({children}) => {
       userId
     })
   }
+
   const deliverOrder = (orderId) => {
 
     console.log('orderId', orderId)
 
-    //Editar el state
-
+    
     //guardar en BD
     const data = {
-      "status": "delivered",
+      "status": "delivering",
       "dateProcessed": new Date()
   }
 
+  //Editar el state
 
     fetchDB(`orders/${orderId}`, "PATCH", data, localStorage.getItem("token"))
     .then((resultado) => console.log("Datos actualizados: ", resultado))
@@ -67,7 +67,28 @@ export const OrdersProvider = ({children}) => {
     // const dateProcessed = Math.floor(timeMs/1000)
     // console.log('dprocessed', dateProcessed)
 
+    
+  }
 
+  const finishOrder = (orderId) => {
+
+    console.log('orderId', orderId)
+
+    
+    //guardar en BD
+    const data = {
+      "status": "delivered"
+  }
+
+  //Editar el state
+
+    fetchDB(`orders/${orderId}`, "PATCH", data, localStorage.getItem("token"))
+    .then((resultado) => console.log("Datos actualizados: ", resultado))
+
+    // const dateProcessed = Math.floor(timeMs/1000)
+    // console.log('dprocessed', dateProcessed)
+
+    
   }
 
   const setProduct = (product, operation) => {
@@ -111,13 +132,10 @@ export const OrdersProvider = ({children}) => {
         })
       }
     }
-
   }
 
   const removeProductFromOrder = () => {
-
     const resultado = order.products.filter(product => product.productId >= 1)
-
     setOrder({
       ...order,
       products: resultado
@@ -136,7 +154,6 @@ export const OrdersProvider = ({children}) => {
   }
 
   
-
   return (
     <OrdersContext.Provider
       value = {{
@@ -145,6 +162,7 @@ export const OrdersProvider = ({children}) => {
         setClient,
         setUserId,
         deliverOrder,
+        finishOrder,
         setProduct,
         confirmOrder,
         cleanOrder,

@@ -4,19 +4,23 @@ import { useOrders } from '../context/orders/OrdersContext'
 //1.1 Añadir un producto de ejemplo
 // 2. Hacer el  map de las ordenes (pintar orden/orden)
 // 3. Destructuramos data recibida de a acuerdo a los requerimientos de nuestra estructura inicial.
+
 const KitchenForm = () => {
+
   const { 
     orders,
     deliverOrder,
   } = useOrders()
+
   
+
   return (
     <>
       <h2>Pendientes</h2>
       {
+        // eslint-disable-next-line array-callback-return
         orders && orders.map(order => {
-          if(order.status === "pending")
-           return (
+          if(order.status === "pending") return (
           <div key={order.id} className="columna-md-50 contenedor-resumen">
             <div className="menu">
               <div className="table">
@@ -25,6 +29,7 @@ const KitchenForm = () => {
                   <div className="columna item-columna-resumen">Producto</div>
                   <div className="columna precio-columna-resumen">Cantidad</div>
                 </div>
+
             {  
             order.products.map ((product, id) => (
                 <div key={id} className="fila">
@@ -37,7 +42,6 @@ const KitchenForm = () => {
                 </div> 
             ))
             }
-               
               </div>
             </div>
               <input
@@ -48,12 +52,15 @@ const KitchenForm = () => {
               />
           </div>
         )})
-      }) 
+      }
+
+
       <h2>Entregadas</h2>
       {
+        // eslint-disable-next-line array-callback-return
         orders && orders.map(order => {
           console.log(order)
-          if(order.status === "delivered") return (
+          if(order.status === "delivering") return (
           <div key={order.id} className="columna-md-50 contenedor-resumen">
             <div className="menu">
               <div className="table">
@@ -62,6 +69,7 @@ const KitchenForm = () => {
                   <div className="columna item-columna-resumen">Producto</div>
                   <div className="columna precio-columna-resumen">Cantidad</div>
                 </div>
+
             {  
             order.products.map ((product, id) => (
                 <div key={id} className="fila">
@@ -84,11 +92,12 @@ const KitchenForm = () => {
                 </div> 
               </div>
             </div>
-             
           </div>
         )})
       }) 
+
     </>
     )
   }
+
 export default KitchenForm

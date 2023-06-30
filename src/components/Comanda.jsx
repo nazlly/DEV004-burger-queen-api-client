@@ -35,8 +35,8 @@ const Comanda = () => {
       }
       setProducts(data)
     })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+   // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
 
   function getQuantity(product) {
     const quantity = order?.products?.filter(p => {
